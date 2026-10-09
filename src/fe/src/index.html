@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Parkoid</title>
+</head>
+<body>
+ParkingManagementSystem
+<p id="backend-response">Loading...</p>
+<script>
+    fetch('http://localhost:8081/api/')
+        .then(response => response.text())
+        .then(text => document.getElementById('backend-response').textContent = text)
+        .catch(error => document.getElementById('backend-response').textContent = 'Backend error: ' + error.message);
+</script>
+</body>
+</html>
