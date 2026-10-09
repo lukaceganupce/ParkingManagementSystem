@@ -1,0 +1,20 @@
+{
+    "name":  "src",
+    "version":  "1.0.0",
+    "description":  "",
+    "main":  "index.js",
+    "scripts":  {
+                    "test":  "echo \"Error: no test specified\" \u0026\u0026 exit 1",
+                    "start":  "node server.js",
+                    "dev":  "nodemon -L server.js"
+                },
+    "keywords":  [
+
+                 ],
+    "author":  "",
+    "license":  "ISC",
+    "type":  "commonjs",
+    "dependencies":  {
+                         "express":  "^5.2.1"
+                     }
+}

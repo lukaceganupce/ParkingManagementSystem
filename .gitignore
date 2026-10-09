@@ -1,0 +1,3 @@
+# local secrets and dependencies
+.env
+node_modules/

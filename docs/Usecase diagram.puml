@@ -1,0 +1,50 @@
+@startuml
+left to right direction
+actor Driver
+actor "Registered User" as User
+actor Operator
+actor "Camera / ALPR" as Camera
+actor "Barrier Controller" as Barrier
+actor "Payment Provider" as Pay
+
+User --|> Driver
+
+rectangle Parkoid {
+  usecase "UC1 Enter parking" as UC1
+  usecase "UC2 Pay parking fee" as UC2
+  usecase "UC3 Exit parking" as UC3
+  usecase "UC4 Register account" as UC4
+  usecase "UC5 Manage plates and payment methods" as UC5
+  usecase "UC6 View parking history" as UC6
+  usecase "UC7 Apply discount" as UC7
+  usecase "UC8 Change language" as UC8
+  usecase "UC9 Manage parking areas, tariffs and discounts" as UC9
+  usecase "UC10 View occupancy and revenue reports" as UC10
+  usecase "UC11 Open/close barrier manually" as UC11
+  usecase "Recognize license plate" as UCR
+  usecase "Control barrier" as UCB
+}
+
+Driver --> UC1
+Driver --> UC2
+Driver --> UC3
+Driver --> UC4
+Driver --> UC8
+User --> UC5
+User --> UC6
+Operator --> UC9
+Operator --> UC10
+Operator --> UC11
+
+UC1 ..> UCR : <<include>>
+UC1 ..> UCB : <<include>>
+UC3 ..> UCR : <<include>>
+UC3 ..> UCB : <<include>>
+UC3 ..> UC2 : <<include>>
+UC2 ..> UC7 : <<extend>>
+UC11 ..> UCB : <<include>>
+
+UCR -- Camera
+UCB -- Barrier
+UC2 -- Pay
+@enduml

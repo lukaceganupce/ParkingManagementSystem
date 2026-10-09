@@ -1,0 +1,55 @@
+@startuml
+skinparam componentStyle uml2
+skinparam nodeBackgroundColor #F5F5F5
+
+node "Client device" as Client <<device>> {
+  node "Web browser" as Browser <<execution environment>> {
+    artifact "Web Components\n(HTML, CSS, JavaScript)" as WC
+  }
+}
+
+node "Docker host" <<device>> {
+  node "Docker Engine" <<execution environment>> {
+
+    node "frontend-server" <<Docker container>> {
+      node "Frontend web server\n(e.g. nginx)" as FrontSrv <<web server>> {
+        artifact "index.html" as IndexHtml
+        artifact "Static assets\n(JS, CSS, images, i18n)" as Static
+      }
+    }
+
+    node "backend-server" <<Docker container>> {
+      node "Backend web server\n(e.g. nginx)" as BackSrv <<web server>>
+    }
+
+    node "app" <<Docker container>> {
+      node "Node.js runtime" <<execution environment>> {
+        artifact "Express application\n(REST API, business logic)" as Express
+      }
+    }
+
+    node "db" <<Docker container>> {
+      node "PostgreSQL server" as PG <<database server>> {
+        database "parkoid" as DB
+      }
+    }
+
+    database "pgdata" as Vol <<Docker volume>>
+  }
+}
+
+node "External systems" <<device>> {
+  node "Camera / ALPR" as Cam <<device>>
+  node "Barrier Controller" as Bar <<device>>
+  node "Payment Provider" as Pay <<external service>>
+}
+
+Browser --> FrontSrv : HTTP(S)\nGET index.html, static assets
+Browser --> BackSrv : HTTP(S)\n/api/*
+BackSrv --> Express : HTTP (proxy_pass)
+Express --> PG : TCP 5432\n(SQL)
+PG ..> Vol : stores data
+Express --> Pay : HTTPS
+Express --> Bar : open/close
+Cam --> BackSrv : plate events\n(HTTP)
+@enduml
