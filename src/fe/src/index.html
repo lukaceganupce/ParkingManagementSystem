@@ -2,16 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0; url=home.html">
     <title>Parkoid</title>
 </head>
 <body>
-ParkingManagementSystem
-<p id="backend-response">Loading...</p>
-<script>
-    fetch('http://localhost:8081/api/')
-        .then(response => response.text())
-        .then(text => document.getElementById('backend-response').textContent = text)
-        .catch(error => document.getElementById('backend-response').textContent = 'Backend error: ' + error.message);
-</script>
+<a href="home.html">Parkoid</a>
 </body>
 </html>

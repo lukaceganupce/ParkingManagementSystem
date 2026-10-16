@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title data-i18n="page.signUp">Parkoid</title>
+    <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/design-system.css">
+</head>
+<body class="layout">
+<app-header></app-header>
+
+<main class="main">
+    <div class="auth">
+        <form id="sign-up-form" class="card stack" novalidate>
+            <h1 data-i18n="signUp.title"></h1>
+            <div class="field">
+                <label class="field__label" for="email" data-i18n="auth.email"></label>
+                <input id="email" class="input" type="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+                <label class="field__label" for="username" data-i18n="auth.username"></label>
+                <input id="username" class="input" type="text" autocomplete="username" required>
+            </div>
+            <div class="field">
+                <label class="field__label" for="password" data-i18n="auth.password"></label>
+                <input id="password" class="input" type="password" autocomplete="new-password" minlength="6" required>
+            </div>
+            <div id="message" role="alert" hidden></div>
+            <button class="btn btn--lg" type="submit" data-i18n="signUp.submit"></button>
+            <div class="auth__links">
+                <span><span class="text-muted" data-i18n="signUp.haveAccount"></span> <a href="sign_in.html" data-i18n="signIn.title"></a></span>
+                <a href="home.html" data-i18n="common.backHome"></a>
+            </div>
+        </form>
+    </div>
+</main>
+
+<app-footer></app-footer>
+<script type="module" src="js/pages/sign-up.js"></script>
+</body>
+</html>

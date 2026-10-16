@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title data-i18n="page.dashboard">Parkoid</title>
+    <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/design-system.css">
+</head>
+<body class="layout">
+<app-header></app-header>
+
+<main class="main container page">
+    <h1 data-i18n="dashboard.title"></h1>
+
+    <section id="barrier" class="card stack">
+        <h2 data-i18n="dashboard.barrier"></h2>
+        <div class="cluster">
+            <button type="button" id="barrier-open" class="btn">
+                <span data-icon="unlock"></span><span data-i18n="dashboard.openBarrier"></span>
+            </button>
+            <button type="button" id="barrier-close" class="btn btn--secondary">
+                <span data-icon="lock"></span><span data-i18n="dashboard.closeBarrier"></span>
+            </button>
+        </div>
+        <div id="barrier-message" role="status" hidden></div>
+    </section>
+
+    <section id="tariffs">
+        <div class="page-section__header">
+            <h2 data-i18n="dashboard.tariffs"></h2>
+            <button type="button" id="add-tariff-btn" class="btn">
+                <span data-icon="plus"></span><span data-i18n="dashboard.addTariff"></span>
+            </button>
+        </div>
+        <div class="table-wrap">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th data-i18n="table.name"></th>
+                    <th data-i18n="table.validFrom"></th>
+                    <th data-i18n="table.validTo"></th>
+                    <th data-i18n="table.pricePerHour"></th>
+                    <th data-i18n="table.actions"></th>
+                </tr>
+                </thead>
+                <tbody id="tariffs-body"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="discounts">
+        <div class="page-section__header">
+            <h2 data-i18n="dashboard.discounts"></h2>
+            <button type="button" id="add-discount-btn" class="btn">
+                <span data-icon="plus"></span><span data-i18n="dashboard.addDiscount"></span>
+            </button>
+        </div>
+        <div class="table-wrap">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th data-i18n="table.code"></th>
+                    <th data-i18n="table.amount"></th>
+                    <th data-i18n="table.unit"></th>
+                    <th data-i18n="table.expiration"></th>
+                    <th data-i18n="table.actions"></th>
+                </tr>
+                </thead>
+                <tbody id="discounts-body"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="history">
+        <div class="page-section__header"><h2 data-i18n="dashboard.history"></h2></div>
+        <div class="table-wrap">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th data-i18n="table.timeIn"></th>
+                    <th data-i18n="table.timeOut"></th>
+                    <th data-i18n="table.plate"></th>
+                    <th data-i18n="table.price"></th>
+                    <th data-i18n="table.status"></th>
+                </tr>
+                </thead>
+                <tbody id="history-body"></tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+<app-footer></app-footer>
+
+<app-modal id="tariff-modal" heading-key="dashboard.addTariff">
+    <form id="tariff-form" class="stack" novalidate>
+        <div class="field">
+            <label class="field__label" for="tariff-name" data-i18n="table.name"></label>
+            <input id="tariff-name" class="input" required>
+        </div>
+        <div class="field">
+            <label class="field__label" for="tariff-from" data-i18n="table.validFrom"></label>
+            <input id="tariff-from" class="input" type="datetime-local" required>
+        </div>
+        <div class="field">
+            <label class="field__label" for="tariff-to" data-i18n="table.validTo"></label>
+            <input id="tariff-to" class="input" type="datetime-local">
+        </div>
+        <div class="field">
+            <label class="field__label" for="tariff-price" data-i18n="table.pricePerHour"></label>
+            <input id="tariff-price" class="input" type="number" min="0" step="0.01" required>
+        </div>
+        <div id="tariff-error" role="alert" hidden></div>
+        <button type="submit" class="btn" data-i18n="common.save"></button>
+    </form>
+</app-modal>
+
+<app-modal id="discount-modal" heading-key="dashboard.addDiscount">
+    <form id="discount-form" class="stack" novalidate>
+        <div class="field">
+            <label class="field__label" for="discount-code" data-i18n="table.code"></label>
+            <input id="discount-code" class="input" autocomplete="off" required>
+        </div>
+        <div class="field">
+            <label class="field__label" for="discount-amount" data-i18n="form.discount.amount"></label>
+            <input id="discount-amount" class="input" type="number" min="0" step="0.01" required>
+        </div>
+        <div class="field">
+            <label class="field__label" for="discount-unit" data-i18n="table.unit"></label>
+            <select id="discount-unit" class="select" required>
+                <option value="percent" data-i18n="unit.percent"></option>
+                <option value="fixed" data-i18n="unit.fixed"></option>
+            </select>
+        </div>
+        <div class="field">
+            <label class="field__label" for="discount-expiration" data-i18n="table.expiration"></label>
+            <input id="discount-expiration" class="input" type="datetime-local">
+        </div>
+        <div id="discount-error" role="alert" hidden></div>
+        <button type="submit" class="btn" data-i18n="common.save"></button>
+    </form>
+</app-modal>
+
+<script type="module" src="js/pages/dashboard.js"></script>
+</body>
+</html>

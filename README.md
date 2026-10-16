@@ -49,6 +49,12 @@ The first start builds the Node.js image and installs npm dependencies into the 
 | app | internal `app:3000` | Node.js + Express with nodemon |
 | db | internal `db:5432` | PostgreSQL |
 
+### Frontend pages
+
+Open http://localhost:8080 (redirects to `home.html`). Pages: `home.html`, `sign_up.html`, `sign_in.html`, `forgot_password.html`, `reset_password.html`, `account.html`, `dashboard.html` (operator only).
+
+- `src/fe/src/js/main.js` – common bootstrap, `components/` – Web Components (`app-header`, `app-footer`, `app-modal`), `pages/` – logic of each page, `i18n/` – translations (Česky, English), `icons.js` – SVG icons, `api.js` – REST client.
+- **Mock API:** the backend does not implement the API yet, so `js/config.js` has `USE_MOCK = true` and `js/mock-api.js` simulates the backend in the browser (localStorage). Demo accounts: `operator@parkoid.local` / `operator123` (operator), `driver@parkoid.local` / `driver123` (driver). Demo discount codes: `WELCOME10`, `MINUS20`. Any new license plate is treated as having entered 90 minutes ago. To reset the mock data, delete `parkoid_mock_db` in the browser local storage. Set `USE_MOCK = false` to call the real backend at `API_BASE`.
 ### Source code outside the container
 
 Sources are **not copied** into the images, they are mounted from the host:

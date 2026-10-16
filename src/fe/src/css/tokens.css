@@ -1,0 +1,233 @@
+/* Design tokens (CSS custom properties).
+   Layer 1: primitives (raw values). Layer 2: semantic tokens (meaning, themeable).
+   Components must use semantic tokens only. */
+
+:root {
+  /* ---------- Primitives: color ---------- */
+  --color-blue-50: #eff6ff;
+  --color-blue-100: #dbeafe;
+  --color-blue-200: #bfdbfe;
+  --color-blue-400: #60a5fa;
+  --color-blue-500: #3b82f6;
+  --color-blue-600: #2563eb;
+  --color-blue-700: #1d4ed8;
+  --color-blue-900: #1e3a8a;
+
+  --color-gray-0: #ffffff;
+  --color-gray-50: #f8fafc;
+  --color-gray-100: #f1f5f9;
+  --color-gray-200: #e2e8f0;
+  --color-gray-300: #cbd5e1;
+  --color-gray-400: #94a3b8;
+  --color-gray-500: #64748b;
+  --color-gray-600: #475569;
+  --color-gray-700: #334155;
+  --color-gray-800: #1e293b;
+  --color-gray-900: #0f172a;
+
+  --color-green-100: #dcfce7;
+  --color-green-600: #16a34a;
+  --color-green-800: #166534;
+  --color-amber-100: #fef3c7;
+  --color-amber-500: #f59e0b;
+  --color-amber-800: #92400e;
+  --color-red-100: #fee2e2;
+  --color-red-600: #dc2626;
+  --color-red-800: #991b1b;
+
+  /* ---------- Primitives: typography ---------- */
+  --font-family-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-family-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.2;
+  --line-height-snug: 1.4;
+  --line-height-normal: 1.6;
+
+  --letter-spacing-tight: -0.01em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.04em;
+
+  /* ---------- Spacing (4px base scale) ---------- */
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+
+  /* ---------- Radius ---------- */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+
+  /* ---------- Border width ---------- */
+  --border-width-thin: 1px;
+  --border-width-thick: 2px;
+
+  /* ---------- Elevation (shadows) ---------- */
+  --elevation-0: none;
+  --elevation-1: 0 1px 2px rgb(15 23 42 / 0.08);
+  --elevation-2: 0 2px 6px rgb(15 23 42 / 0.10), 0 1px 2px rgb(15 23 42 / 0.06);
+  --elevation-3: 0 8px 16px rgb(15 23 42 / 0.12), 0 2px 4px rgb(15 23 42 / 0.06);
+  --elevation-4: 0 16px 32px rgb(15 23 42 / 0.16), 0 4px 8px rgb(15 23 42 / 0.08);
+
+  /* ---------- Z-index ---------- */
+  --z-base: 0;
+  --z-sticky: 100;
+  --z-drawer: 200;
+  --z-modal: 300;
+  --z-toast: 400;
+
+  /* ---------- Motion ---------- */
+  --duration-fast: 120ms;
+  --duration-normal: 200ms;
+  --duration-slow: 320ms;
+  --easing-standard: cubic-bezier(0.2, 0, 0, 1);
+
+  /* ---------- Breakpoints (reference values, custom properties cannot be used in media queries) ---------- */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+
+  /* ---------- Layout ---------- */
+  --container-max-width: 72rem;
+  --header-height: 4rem;
+  --sidebar-width: 18rem;
+  --control-height: 2.5rem;
+
+  /* ---------- Semantic: light theme (default) ---------- */
+  --color-bg: var(--color-gray-50);
+  --color-surface: var(--color-gray-0);
+  --color-surface-raised: var(--color-gray-0);
+  --color-surface-sunken: var(--color-gray-100);
+  --color-overlay: rgb(15 23 42 / 0.5);
+
+  --color-text: var(--color-gray-900);
+  --color-text-muted: var(--color-gray-600);
+  --color-text-inverse: var(--color-gray-0);
+  --color-text-link: var(--color-blue-700);
+
+  --color-border: var(--color-gray-200);
+  --color-border-strong: var(--color-gray-300);
+
+  --color-primary: var(--color-green-600);
+  --color-primary-hover: var(--color-green-700);
+  --color-primary-subtle: var(--color-green-50);
+  --color-on-primary: var(--color-gray-0);
+
+  --color-focus-ring: var(--color-blue-500);
+
+  --color-success: var(--color-green-600);
+  --color-success-subtle: var(--color-green-100);
+  --color-on-success-subtle: var(--color-green-800);
+  --color-warning: var(--color-amber-500);
+  --color-warning-subtle: var(--color-amber-100);
+  --color-on-warning-subtle: var(--color-amber-800);
+  --color-danger: var(--color-red-600);
+  --color-danger-subtle: var(--color-red-100);
+  --color-on-danger-subtle: var(--color-red-800);
+
+  --color-disabled-bg: var(--color-gray-100);
+  --color-disabled-text: var(--color-gray-400);
+
+  /* ---------- Semantic: typography roles ---------- */
+  --font-body: var(--font-size-md) / var(--line-height-normal) var(--font-family-sans);
+  --font-heading-weight: var(--font-weight-bold);
+}
+
+/* Dark theme: explicit via data-theme="dark", or automatic unless data-theme="light" is set */
+:root[data-theme="dark"] {
+  --color-bg: var(--color-gray-900);
+  --color-surface: var(--color-gray-800);
+  --color-surface-raised: var(--color-gray-700);
+  --color-surface-sunken: #0b1220;
+  --color-overlay: rgb(0 0 0 / 0.65);
+
+  --color-text: var(--color-gray-100);
+  --color-text-muted: var(--color-gray-400);
+  --color-text-inverse: var(--color-gray-900);
+  --color-text-link: var(--color-blue-400);
+
+  --color-border: var(--color-gray-700);
+  --color-border-strong: var(--color-gray-600);
+
+  --color-primary: var(--color-blue-500);
+  --color-primary-hover: var(--color-blue-400);
+  --color-primary-subtle: rgb(59 130 246 / 0.15);
+
+  --color-success-subtle: rgb(22 163 74 / 0.2);
+  --color-on-success-subtle: #86efac;
+  --color-warning-subtle: rgb(245 158 11 / 0.2);
+  --color-on-warning-subtle: #fcd34d;
+  --color-danger-subtle: rgb(220 38 38 / 0.2);
+  --color-on-danger-subtle: #fca5a5;
+
+  --color-disabled-bg: var(--color-gray-800);
+  --color-disabled-text: var(--color-gray-500);
+
+  --elevation-1: 0 1px 2px rgb(0 0 0 / 0.4);
+  --elevation-2: 0 2px 6px rgb(0 0 0 / 0.45);
+  --elevation-3: 0 8px 16px rgb(0 0 0 / 0.5);
+  --elevation-4: 0 16px 32px rgb(0 0 0 / 0.55);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-bg: var(--color-gray-900);
+    --color-surface: var(--color-gray-800);
+    --color-surface-raised: var(--color-gray-700);
+    --color-surface-sunken: #0b1220;
+    --color-overlay: rgb(0 0 0 / 0.65);
+
+    --color-text: var(--color-gray-100);
+    --color-text-muted: var(--color-gray-400);
+    --color-text-inverse: var(--color-gray-900);
+    --color-text-link: var(--color-blue-400);
+
+    --color-border: var(--color-gray-700);
+    --color-border-strong: var(--color-gray-600);
+
+    --color-primary: var(--color-blue-500);
+    --color-primary-hover: var(--color-blue-400);
+    --color-primary-subtle: rgb(59 130 246 / 0.15);
+
+    --color-success-subtle: rgb(22 163 74 / 0.2);
+    --color-on-success-subtle: #86efac;
+    --color-warning-subtle: rgb(245 158 11 / 0.2);
+    --color-on-warning-subtle: #fcd34d;
+    --color-danger-subtle: rgb(220 38 38 / 0.2);
+    --color-on-danger-subtle: #fca5a5;
+
+    --color-disabled-bg: var(--color-gray-800);
+    --color-disabled-text: var(--color-gray-500);
+
+    --elevation-1: 0 1px 2px rgb(0 0 0 / 0.4);
+    --elevation-2: 0 2px 6px rgb(0 0 0 / 0.45);
+    --elevation-3: 0 8px 16px rgb(0 0 0 / 0.5);
+    --elevation-4: 0 16px 32px rgb(0 0 0 / 0.55);
+  }
+}

@@ -1,0 +1,44 @@
+/* Layout and token-based utility classes. */
+
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+.stack > * + * { margin-top: var(--space-4); }
+.stack-sm > * + * { margin-top: var(--space-2); }
+.stack-lg > * + * { margin-top: var(--space-8); }
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.section { padding-block: var(--space-12); }
+
+.text-muted { color: var(--color-text-muted); }
+.text-sm { font-size: var(--font-size-sm); }
+.text-lg { font-size: var(--font-size-lg); }
+.text-center { text-align: center; }
+.font-semibold { font-weight: var(--font-weight-semibold); }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.elevation-1 { box-shadow: var(--elevation-1); }
+.elevation-2 { box-shadow: var(--elevation-2); }
+.elevation-3 { box-shadow: var(--elevation-3); }
+.elevation-4 { box-shadow: var(--elevation-4); }

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title data-i18n="page.home">Parkoid</title>
+    <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/design-system.css">
+</head>
+<body class="layout">
+<app-header></app-header>
+
+<main class="main">
+    <section class="hero container stack">
+        <h1 data-i18n="home.welcome.title"></h1>
+        <p class="text-lg text-muted" data-i18n="home.welcome.text"></p>
+    </section>
+
+    <section class="container section" id="features">
+        <div class="grid-3">
+            <article class="card feature">
+                <span class="feature__icon" data-icon="camera"></span>
+                <h3 data-i18n="home.feature1.title"></h3>
+                <p class="text-muted" data-i18n="home.feature1.text"></p>
+            </article>
+            <article class="card feature">
+                <span class="feature__icon" data-icon="card"></span>
+                <h3 data-i18n="home.feature2.title"></h3>
+                <p class="text-muted" data-i18n="home.feature2.text"></p>
+            </article>
+            <article class="card feature">
+                <span class="feature__icon" data-icon="tag"></span>
+                <h3 data-i18n="home.feature3.title"></h3>
+                <p class="text-muted" data-i18n="home.feature3.text"></p>
+            </article>
+        </div>
+    </section>
+
+    <section class="container section" id="pay">
+        <form id="plate-form" class="card plate-card stack" novalidate>
+            <label class="field__label" for="plate" data-i18n="home.plate.label"></label>
+            <input id="plate" class="input input--xl" type="text" autocomplete="off" maxlength="12" required data-i18n-placeholder="home.plate.placeholder">
+            <div id="plate-error" role="alert" hidden></div>
+            <button class="btn btn--lg" type="submit">
+                <span data-icon="card"></span><span data-i18n="home.pay.start"></span>
+            </button>
+        </form>
+
+        <section id="payment" class="card card--raised payment stack" hidden>
+            <h2 data-i18n="pay.title"></h2>
+            <dl class="summary">
+                <div><dt data-i18n="pay.timeIn"></dt><dd id="pay-time-in"></dd></div>
+                <div><dt data-i18n="pay.timeOut"></dt><dd id="pay-time-out"></dd></div>
+                <div class="summary__total"><dt data-i18n="pay.finalPrice"></dt><dd id="pay-price"></dd></div>
+            </dl>
+            <p id="discount-info" class="alert alert--success" hidden></p>
+            <button type="button" id="discount-btn" class="btn btn--secondary">
+                <span data-icon="tag"></span><span data-i18n="pay.addDiscount"></span>
+            </button>
+
+            <form id="card-form" class="stack" novalidate>
+                <h3 data-i18n="pay.card.title"></h3>
+                <div class="field">
+                    <label class="field__label" for="card-number" data-i18n="pay.card.number"></label>
+                    <input id="card-number" class="input" inputmode="numeric" autocomplete="cc-number" maxlength="23" placeholder="1234 5678 9012 3456" pattern="[0-9 ]{13,23}" required>
+                </div>
+                <div class="field-row">
+                    <div class="field">
+                        <label class="field__label" for="card-expiry" data-i18n="pay.card.expiry"></label>
+                        <input id="card-expiry" class="input" inputmode="numeric" autocomplete="cc-exp" maxlength="5" placeholder="MM/YY" pattern="(0[1-9]|1[0-2])/[0-9]{2}" required>
+                    </div>
+                    <div class="field">
+                        <label class="field__label" for="card-cvv" data-i18n="pay.card.cvv"></label>
+                        <input id="card-cvv" class="input" inputmode="numeric" autocomplete="cc-csc" maxlength="4" placeholder="123" pattern="[0-9]{3,4}" required>
+                    </div>
+                </div>
+                <div id="pay-error" role="alert" hidden></div>
+                <button type="submit" id="pay-btn" class="btn btn--lg">
+                    <span data-icon="lock"></span><span data-i18n="pay.pay"></span>
+                </button>
+            </form>
+            <div id="pay-success" role="status" hidden></div>
+        </section>
+    </section>
+
+    <section class="container section" id="about">
+        <h2 class="section-title" data-i18n="about.title"></h2>
+        <p class="text-muted" data-i18n="about.text"></p>
+    </section>
+
+    <section class="container section" id="prices">
+        <h2 class="section-title" data-i18n="prices.title"></h2>
+        <div class="table-wrap">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th data-i18n="table.name"></th>
+                    <th data-i18n="table.validFrom"></th>
+                    <th data-i18n="table.validTo"></th>
+                    <th data-i18n="table.pricePerHour"></th>
+                </tr>
+                </thead>
+                <tbody id="price-body"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="container section faq" id="faq">
+        <h2 class="section-title" data-i18n="faq.title"></h2>
+        <details><summary data-i18n="faq.q1"></summary><p data-i18n="faq.a1"></p></details>
+        <details><summary data-i18n="faq.q2"></summary><p data-i18n="faq.a2"></p></details>
+        <details><summary data-i18n="faq.q3"></summary><p data-i18n="faq.a3"></p></details>
+    </section>
+
+    <section class="container section" id="contact">
+        <h2 class="section-title" data-i18n="contact.title"></h2>
+        <p class="text-muted" data-i18n="contact.text"></p>
+        <p>info@parkoid.example<br>+420 123 456 789</p>
+    </section>
+</main>
+
+<app-footer></app-footer>
+
+<app-modal id="discount-modal" heading-key="pay.discount.title">
+    <div class="stack">
+        <div id="discount-mine" class="stack-sm" hidden>
+            <p class="font-semibold" data-i18n="pay.discount.select"></p>
+            <div id="discount-list" class="cluster"></div>
+            <p class="text-muted" data-i18n="pay.discount.enter"></p>
+        </div>
+        <form id="discount-form" class="cluster" novalidate>
+            <input id="discount-code" class="input" style="flex: 1" autocomplete="off" required data-i18n-placeholder="pay.discount.placeholder">
+            <button type="submit" class="btn" data-i18n="pay.discount.apply"></button>
+        </form>
+        <div id="discount-error" role="alert" hidden></div>
+    </div>
+</app-modal>
+
+<script type="module" src="js/pages/home.js"></script>
+</body>
+</html>

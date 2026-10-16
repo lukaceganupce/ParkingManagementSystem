@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title data-i18n="page.account">Parkoid</title>
+    <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/design-system.css">
+</head>
+<body class="layout">
+<app-header></app-header>
+
+<main class="main container page">
+    <h1 data-i18n="account.title"></h1>
+
+    <section id="user-info" class="card">
+        <h2 data-i18n="account.info"></h2>
+        <dl class="summary">
+            <div><dt data-i18n="auth.email"></dt><dd id="info-email"></dd></div>
+            <div><dt data-i18n="auth.username"></dt><dd id="info-username"></dd></div>
+            <div><dt data-i18n="account.role"></dt><dd id="info-role"></dd></div>
+        </dl>
+    </section>
+
+    <section id="history">
+        <div class="page-section__header"><h2 data-i18n="account.history"></h2></div>
+        <div class="table-wrap">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th data-i18n="table.timeIn"></th>
+                    <th data-i18n="table.timeOut"></th>
+                    <th data-i18n="table.plate"></th>
+                    <th data-i18n="table.price"></th>
+                    <th data-i18n="table.status"></th>
+                </tr>
+                </thead>
+                <tbody id="history-body"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="discounts">
+        <div class="page-section__header">
+            <h2 data-i18n="account.discounts"></h2>
+            <button type="button" id="add-discount-btn" class="btn">
+                <span data-icon="plus"></span><span data-i18n="account.addDiscount"></span>
+            </button>
+        </div>
+        <div class="table-wrap">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th data-i18n="table.code"></th>
+                    <th data-i18n="table.amount"></th>
+                    <th data-i18n="table.unit"></th>
+                    <th data-i18n="table.expiration"></th>
+                </tr>
+                </thead>
+                <tbody id="discounts-body"></tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+<app-footer></app-footer>
+
+<app-modal id="discount-modal" heading-key="account.addDiscount">
+    <form id="discount-form" class="stack" novalidate>
+        <div class="field">
+            <label class="field__label" for="discount-code" data-i18n="table.code"></label>
+            <input id="discount-code" class="input" autocomplete="off" required>
+        </div>
+        <div id="discount-error" role="alert" hidden></div>
+        <button type="submit" class="btn" data-i18n="common.save"></button>
+    </form>
+</app-modal>
+
+<script type="module" src="js/pages/account.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+@startuml
+hide circle
+skinparam linetype ortho
+
+entity users {
+  * user_key : integer <<PK>>
+  --
+  * username : string
+  * password : string
+  * email : string
+  * role : enum('operator', 'driver')
+  * created_at : datetime
+  * updated_at : datetime
+}
+
+entity tariffs {
+  * tariff_key : integer <<PK>>
+  --
+  * name : string
+  * valid_from : datetime
+  valid_to : datetime
+  * price : decimal
+}
+
+entity discounts {
+  * discount_key : integer <<PK>>
+  --
+  * code : string
+  * discount : decimal
+  * unit : enum('percent', 'fixed')
+  expiration_date : datetime
+}
+
+entity user_discounts {
+  * user_discount_key : integer <<PK>>
+  --
+  * user_key : integer <<FK>>
+  * discount_key : integer <<FK>>
+}
+
+entity parking {
+  * parking_key : integer <<PK>>
+  --
+  * time_in : datetime
+  time_out : datetime
+  * license_plate : string
+  user_key : integer <<FK>>
+  * tariff_key : integer <<FK>>
+  final_price : decimal
+  * payment_status : enum('pending', 'paid', 'failed')
+}
+
+entity parking_discounts {
+  * parking_discount_key : integer <<PK>>
+  --
+  * parking_key : integer <<FK>>
+  * discount_key : integer <<FK>>
+}
+
+users ||--o{ user_discounts
+discounts ||--o{ user_discounts
+users |o--o{ parking
+tariffs ||--o{ parking
+parking ||--o{ parking_discounts
+discounts ||--o{ parking_discounts
+@enduml

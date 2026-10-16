@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title data-i18n="page.signIn">Parkoid</title>
+    <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/design-system.css">
+</head>
+<body class="layout">
+<app-header></app-header>
+
+<main class="main">
+    <div class="auth">
+        <form id="sign-in-form" class="card stack" novalidate>
+            <h1 data-i18n="signIn.title"></h1>
+            <div class="field">
+                <label class="field__label" for="email" data-i18n="auth.email"></label>
+                <input id="email" class="input" type="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+                <label class="field__label" for="password" data-i18n="auth.password"></label>
+                <input id="password" class="input" type="password" autocomplete="current-password" required>
+            </div>
+            <div id="message" role="alert" hidden></div>
+            <button class="btn btn--lg" type="submit" data-i18n="signIn.submit"></button>
+            <div class="auth__links">
+                <span><span class="text-muted" data-i18n="signIn.noAccount"></span> <a href="sign_up.html" data-i18n="signUp.title"></a></span>
+                <a href="forgot_password.html" data-i18n="signIn.forgot"></a>
+                <a href="home.html" data-i18n="common.backHome"></a>
+            </div>
+        </form>
+    </div>
+</main>
+
+<app-footer></app-footer>
+<script type="module" src="js/pages/sign-in.js"></script>
+</body>
+</html>
